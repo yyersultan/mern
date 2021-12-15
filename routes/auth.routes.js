@@ -21,7 +21,8 @@ router.post('/register',
                 message: 'Incorrect data in registration'
             })
         }
-        const {email,password} = req.body(); // we recieve email and pass from react.kjs
+        const {email,password} = req.body; // we recieve email and pass from react.kjs
+        console.log(email,password);
         const candidate = await User.findOne({ email });
         if(candidate){
             return res.status(400).json({ message: 'Such User already exists' });
@@ -32,7 +33,7 @@ router.post('/register',
         res.status(201).json({ message: 'User created successfuly' });
         
     }catch(e){
-        res.status(500).json({message : "Something was wrong "});
+        res.status(500).json({message : "Something was wrong " + req.body.email});
     }
 })
 // /api/auth/
@@ -51,7 +52,7 @@ router.post('/login',
                         message: 'Incorrect data in login'
                     })
                 }
-                const {email,password} = req.body();
+                const {email,password} = req.body;
                 const user = await User.findOne({email});
                 if(!user){ 
                     return res.status(400).json({ message: 'User doesnt found' })
