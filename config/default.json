@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "jwtSecret": "yersultan mern", 
+    "mongoURL": "mongodb+srv://yersultan:12345qwert@cluster0.vvzio.mongodb.net/app?retryWrites=true&w=majority"
+}
